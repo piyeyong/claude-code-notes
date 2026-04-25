@@ -1,9 +1,10 @@
 # Claude Code Notes
 
-Claude Code 学习笔记，记录使用过程中的经验和技巧。
+Learning notes for Claude Code, documenting tips and techniques along the way.
 
-## 目录 / Table of Contents
+## Table of Contents
 
-### mitmproxy 抓包指南
+### mitmproxy Guide
+Use mitmproxy to intercept HTTP traffic between a local agent loop and the Anthropic LLM API. This makes it easy to inspect the exact messages sent and received — including tool-use calls and responses — for debugging agent behavior.
 - [中文](docs/zh/mitmproxy-guide.md)
 - [English](docs/en/mitmproxy-guide.md)
