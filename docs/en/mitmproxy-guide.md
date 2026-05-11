@@ -143,3 +143,4 @@ Fix:
 ```bash
 pip install --upgrade typing_extensions
 ```
+<img width="2276" height="1284" alt="image" src="https://github.com/user-attachments/assets/ec2c7454-6bad-4cdc-ab92-83b7e9277099" />
