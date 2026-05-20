@@ -13,3 +13,7 @@ Claude Code 的学习笔记，记录使用过程中的技巧和心得。
 ### [Claude Code 如何与大模型通信](docs/zh/Claude%20Code%20如何与大模型通信.md)
 
 基于 mitmproxy 实际抓包数据（3 个问题、8 次 API 调用），分析 Claude Code 与 Anthropic API 的通信过程：请求类型（话题检测、主对话、建议补全、Token 计数）、System Prompt 结构、工具定义、消息历史、SSE 流式响应及 Prompt Caching。
+
+### [Claude Code 源码架构深度分析](docs/zh/Claude%20Code%20源码分析.md)
+
+基于 Claude Code v2.1.88 反编译源码的全模块架构追踪。
