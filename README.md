@@ -17,3 +17,15 @@ Based on actual mitmproxy packet capture (3 questions, 8 API calls), analyzing h
 ### [Claude Code Source Code Architecture — Deep Analysis](docs/en/Claude%20Code%20Source%20Code%20Architecture%20Deep%20Analysis.md)
 
 Comprehensive module-by-module architectural trace based on decompiled Claude Code v2.1.88.
+
+### [Claude Code Full Chain Analysis — Complete Module Trace from Input to Response](docs/en/Claude%20Code%20Full%20Chain%20Analysis%20-%20Complete%20Module%20Trace%20from%20Input%20to%20Response.md)
+
+End-to-end architectural walkthrough of Claude Code: from entry points (REPL/CLI/SDK) through input processing, QueryEngine, the core query loop, tool orchestration, MCP, skills, hooks, compaction, plugins, sub-agents, and state management — with full sequence and dependency diagrams.
+
+### [Claude Code Query Loop Implementation Deep Dive](docs/en/Claude%20Code%20Query%20Loop%20Implementation%20Deep%20Dive.md)
+
+Deep dive into the `query()` AsyncGenerator: the six-stage iteration cycle (compact → API call → error recovery → tool execution → attachment injection → loop decision), StreamingToolExecutor concurrency model, tool permission system, and architectural trade-offs.
+
+### [Claude Code System Prompt Implementation Deep Dive](docs/en/Claude%20Code%20System%20Prompt%20Implementation%20Deep%20Dive.md)
+
+How Claude Code assembles its system prompt: static/dynamic section split, `systemPromptSection()` memoization, BOUNDARY marker for global cache scope, prompt cache hit mechanics (byte-prefix matching, beta header latching, message-level caching), and architectural analysis.
