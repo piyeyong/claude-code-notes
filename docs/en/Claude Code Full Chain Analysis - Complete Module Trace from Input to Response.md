@@ -396,6 +396,41 @@ State transitions:
 
 ### 16. Complete Sequence Diagram
 
+```mermaid
+sequenceDiagram
+    participant User
+    participant PI as processInput
+    participant QE as QueryEngine
+    participant Q as query()
+    participant C as Claude API
+
+    User->>PI: text/cmd
+    PI->>PI: hooks (validate)
+    PI->>QE: UserMessage
+    QE->>Q: system prompt + memory + MCP tools + context
+    Q->>C: messages
+    C-->>Q: stream
+    Q-->>PI: yield
+    PI-->>User: stream
+
+    Note over Q,C: tool_use?
+    Q->>Q: runTools() / canUseTool() / tool.execute()
+    Q-->>PI: permission?
+    PI-->>User: permission?
+    User->>PI: allow/deny
+    PI->>Q: allow/deny
+    Q->>C: tool_result
+    C-->>Q: stream (loop)
+
+    Note over Q,C: no tool_use = turn end
+    Q-->>PI: yield
+    PI-->>User: final text
+    QE->>QE: persist session + post hooks
+```
+
+<details>
+<summary>ASCII Version</summary>
+
 ```
 ┌─────┐     ┌────────────┐    ┌─────────────┐    ┌────────┐    ┌──────┐
 │User │     │processInput│    │QueryEngine  │    │query() │    │Claude│
@@ -442,9 +477,40 @@ State transitions:
    │              │                   │ post hooks     │            │
 ```
 
+</details>
+
 ---
 
 ### 17. Inter-Module Dependency Graph
+
+```mermaid
+graph TD
+    cli["cli.tsx"] --> main["main.tsx"]
+    State["State (AppStateStore)"] --> main
+
+    main --> QE["QueryEngine.ts"]
+
+    QE --> qc["queryContext<br/>(prompts)"]
+    QE --> query["query.ts<br/>(agentic loop)"]
+    QE --> pui["processUserInput<br/>(commands, hooks, input)"]
+
+    qc --> memdir["memdir<br/>(memory)"]
+    query --> api["services/api<br/>(Claude API call)<br/>retry, fallback, cache"]
+
+    api --> orch["toolOrchestration"]
+
+    orch --> Bash["BashTool"]
+    orch --> File["FileTools"]
+    orch --> Agent["AgentTool<br/>(sub-agent)"]
+    orch --> MCP["MCPTool"]
+    orch --> Skill["SkillTool"]
+
+    Plugins["Plugins"] --> Agent
+    MCPClient["MCP Client"] --> MCP
+```
+
+<details>
+<summary>ASCII Version</summary>
 
 ```
                     ┌──────────┐
@@ -492,6 +558,8 @@ State transitions:
               │Plugins │  │MCP Client│
               └────────┘  └──────────┘
 ```
+
+</details>
 
 ---
 
