@@ -29,3 +29,7 @@ Claude Code 的学习笔记，记录使用过程中的技巧和心得。
 ### [Claude Code System Prompt 实现详解](docs/zh/Claude%20Code%20System%20Prompt%20实现详解.md)
 
 System Prompt 的组装机制：静态/动态 Section 分割、`systemPromptSection()` 缓存、BOUNDARY Marker 与全局缓存范围、Prompt Cache 命中机制（字节前缀匹配、Beta Header Latching、Message 级缓存）及架构设计分析。
+
+### [Claude Code 子 Agent 深度分析](docs/zh/Claude%20Code%20子Agent.md)
+
+Sub Agent 系统全链路追踪：AgentTool 作为普通工具的调度机制、Fork vs Normal 两种路径、上下文隔离、内置 Agent 类型、Fork 的 Prompt Cache 优化、结果返回机制及 Worktree 隔离。
