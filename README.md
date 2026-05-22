@@ -30,6 +30,6 @@ Deep dive into the `query()` AsyncGenerator: the six-stage iteration cycle (comp
 
 How Claude Code assembles its system prompt: static/dynamic section split, `systemPromptSection()` memoization, BOUNDARY marker for global cache scope, prompt cache hit mechanics (byte-prefix matching, beta header latching, message-level caching), and architectural analysis.
 
-### [Claude Code Sub-Agent Deep Dive](docs/en/Claude%20Code%20SubAgent.md)
+### [Claude Code Sub-Agent Deep Dive](docs/en/Claude%20Code%20Sub-Agent%20Deep%20Dive.md)
 
 Deep dive into the Sub-Agent system: AgentTool as a regular tool, Fork vs Normal paths, context isolation, built-in agent types, Prompt Cache optimization for forked agents, result return mechanics, and worktree isolation.
